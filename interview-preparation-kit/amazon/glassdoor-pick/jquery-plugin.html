@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <title>Plugin | jQuery</title>
+    <style>
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        (function ($) {
+            $.fn.hello = function (options) {
+                let settings = $.extend({
+                    name: 'Pradeep Kumar' 
+                }, options);
+
+                return this.append('Hello!! ' + settings.name);
+            }
+
+            $.fn.warning = function () {
+                return this.each(function () {
+                    alert(this.innerText);
+                });
+            }   
+        })(jQuery);
+        $(document).ready(function () {
+            $('#here').hello({ name: 'I m FE !' });
+            $('#here').warning();
+            $('#here').hello();
+        });
+    </script>
+</head>
+
+<body>
+    <div id="here"></div>
+</body>
+
+</html>

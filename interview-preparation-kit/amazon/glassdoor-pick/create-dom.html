@@ -1,0 +1,45 @@
+<htm>
+
+    <head>
+        <title>Create DOM</title>
+        <style>
+        </style>
+        <script>
+            function createHTML() {
+                const name = document.getElementById('name');
+                const age = document.getElementById('age');
+
+                const table = document.getElementById("myTable");
+                let tr = document.createElement('tr');
+                let tdName = document.createElement('td');
+                tdName.innerText = name.value;
+                tr.append(tdName);
+                let tdAge = document.createElement('td');
+                tdAge.innerText = age.value;
+                tr.append(tdAge);
+
+                table.append(tr);
+
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="container">
+            <div>
+                Name: <input id="name" type="text" placeholder="Name">
+            </div>
+            <div>
+                Age: <input id="age" type="text" placeholder="Age">
+            </div>
+            <div><button type="button" onclick="createHTML()">Insert</button></div>
+            <table id="myTable">
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                </tr>
+            </table>
+        </div>
+                
+    </body>
+</htm>

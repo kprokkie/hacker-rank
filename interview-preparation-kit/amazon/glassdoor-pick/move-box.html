@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <title>Move Box</title>
+    <style>
+        body {
+            padding: 1rem;
+            position: relative;
+        }
+
+        #box {
+            height: 100px;
+            width: 100px;
+            border: 1px solid #ccc;
+            background-color: aqua;
+            cursor: pointer;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let box = document.getElementById('box');
+            box.addEventListener('click', function () {
+                box.style.top = box.style.top ? parseInt(box.style.top) + 100 : 100;
+            });
+        };
+    </script>
+</head>
+
+<body>
+    <div id="box">
+    </div>
+</body>
+
+</html>

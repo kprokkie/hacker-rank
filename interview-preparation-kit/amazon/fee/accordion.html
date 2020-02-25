@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Accordion</title>
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #container h3 {
+            border: 1px solid #ccc;
+            padding: 1rem;
+            margin: 1rem 0;
+            cursor: pointer;
+        }
+
+        #container p {
+            display: none;
+            padding: 1rem;
+        }
+
+        #container p.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h3>Header 1</h3>
+        <p>Content 1: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. </p>
+        <h3>Header 2</h3>
+        <p>Content 2: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. </p>
+        <h3>Header 3</h3>
+        <p>Content 3: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. </p>
+    </div>
+    <script>
+        const container = document.getElementById('container');
+        container.addEventListener('click', clickHandler);
+
+        function clickHandler(e) {
+            if (event.target.tagName === 'H3') {
+
+                const p = container.querySelector('p.active');
+                if (p)
+                    p.classList.remove('active');
+
+                event.target.nextElementSibling.classList.add('active');
+            }
+        }
+    </script>
+</body>
+
+</html>

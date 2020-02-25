@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>Queue</title>
+    <style>
+
+    </style>
+    <script>
+        function Queue() {
+            this.elements = [];
+        }
+
+        Queue.prototype.enqueue = function (val) {
+            return this.elements.push(val);
+        }
+
+        Queue.prototype.dequeue = function () {
+            //return this.elements.shift(); // queue
+            return this.elements.pop(); // stack
+        }
+
+        Queue.prototype.isEmpty = function () {
+            return !this.elements.length;
+        }
+
+        Queue.prototype.peek = function (val) {
+            //return !this.isEmpty() ? this.elements[0] : 'Not Found'; // queue
+            return this.elements[this.elements.length -1]; // stack
+        }
+
+        let q = new Queue;
+        for (var i = 1; i <= 10; i++) {
+            q.enqueue(i);
+        }
+
+        console.log(q.peek())
+
+        while (!q.isEmpty()) {
+            console.log(q.dequeue());
+        }
+
+    </script>
+</head>
+
+<body>
+    <div>Queue</div>
+    <div id="queue">
+    </div>
+</body>
+
+</html>

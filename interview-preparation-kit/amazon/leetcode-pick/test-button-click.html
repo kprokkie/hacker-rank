@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang = 'es'>
+    <head>
+        <title> MY TEST </title>
+        <meta charset = 'utf-8'>
+
+    </head>
+    <body id = 'body'>
+        <input type = 'button' value = 'Clicked 0 times' id = 'Button' data-clicks = 0 ></input>
+
+        <script>
+            var firstButton = document.getElementById('Button');
+            firstButton.addEventListener('click', createAndAdd);
+
+            function createAndAdd(e){
+                var button = e.target;
+
+                // Reference to the data-clicks attribute
+                var clicksAttribute = button.getAttribute('data-clicks');
+
+                var clicksAttributeValue = parseInt(clicksAttribute);           
+                button.value = 'Clicked ' + (clicksAttributeValue + 1) + ' times';
+
+                clicksAttribute = clicksAttributeValue + 1;
+                button.setAttribute('data-clicks', clicksAttribute);
+
+                //Creating and adding the attributes of the new button.
+                newInputButton = document.createElement('input');
+                newInputButton.setAttribute('type', 'button');
+                newInputButton.setAttribute('value', 'Clicked 0 times');
+                newInputButton.setAttribute('id', 'Button');
+                newInputButton.setAttribute('data-clicks', 0);
+
+                //Adding the event Listener to the new button
+                newInputButton.addEventListener('click', createAndAdd)
+
+                //Adding the new button to the body
+                var body = document.getElementById('body');
+                body.appendChild(newInputButton);
+
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<htm>
+
+    <head>
+        <title></title>
+        <style>
+        </style>
+        <script>
+            function fibo1(num) {
+                let a = 0, b = 1, temp;
+                for (let i = 2; i <= num; i++) {
+                    temp = a + b;
+                    console.log(temp);
+                    a = b;
+                    b = temp;
+                }
+            }
+            //fibo1(10);
+
+            function fibo2(num) {
+                if (num <= 2) return 1;
+                else {
+                    let s = fibo2(num - 1) + fibo2(num - 1);
+                    console.log(s);
+                    return s;
+                };
+            }
+            fibo2(10);
+        </script>
+    </head>
+
+    <body>
+        <div id="container">
+        </div>
+    </body>
+</htm>

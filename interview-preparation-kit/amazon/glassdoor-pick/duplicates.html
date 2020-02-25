@@ -1,0 +1,23 @@
+<htm>
+
+    <head>
+        <title>Duplicate</title>
+        <style>
+        </style>
+        <script>
+            const arr1 = [3, 6, 7, 9, 2, 5];
+            const arr2 = [1, 6, 8, 5, 4, 0];
+
+            const dupArr = arr1.filter((num) => {
+                if (arr2.indexOf(num) > -1) return num;
+            });
+            console.log(dupArr);
+
+        </script>
+    </head>
+
+    <body>
+        <div id="container">
+        </div>
+    </body>
+</htm>

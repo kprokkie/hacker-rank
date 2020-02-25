@@ -1,0 +1,72 @@
+<!--
+    The interviewer showed me some simple design that was created in a webpage, and stated 'Assume you are given an API that uses an AJAX call to return a list of labels. Using HTML/CSS/JS format them as seen on the screen.'
+
+Now I want to add a button within each cell to remove a label from the screen
+Now I want to be able sort the labels, how would I do that? How is this effected by the removing of the labels?
+You now notice that what is being returned from the AJAX call is not the same as before, what steps do you take to solve the problem?
+-->
+<!DOCTYPE html>
+<html>
+<title>Remove Label</title>
+
+<head>
+    <style>
+        table tr td {
+            padding: 1rem;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            const labels = ['Apple', 'Mango', 'Banana', 'Cactus'];
+            const body = document.getElementById('body');
+
+            function createTable(labels) {
+                let table = document.createElement('table');
+                table.setAttribute('id', 'table');
+
+                for (let i = 0; i < labels.length; i++) {
+                    let tr = document.createElement('tr');
+                    let tdL = document.createElement('td');
+                    tdL.innerText = labels[i];
+                    tr.append(tdL)
+
+                    let tdB = document.createElement('td');
+                    let button = document.createElement('button');
+                    button.setAttribute('id', 'button');
+                    button.setAttribute('data-index', i);
+                    button.innerText = 'Remove';
+                   // button.addEventListener('click', remove);
+                    tdB.append(button);
+                    tr.append(tdB)
+
+                    table.appendChild(tr);
+                }
+
+                body.appendChild(table);
+
+                table.addEventListener('click', remove);
+            }
+
+            createTable(labels);
+
+            function remove(e) {
+                // let index = e.target.getAttribute('data-index');
+                console.log(e);
+                // let remainingLabels = labels.splice(index, 1); -- scrap idea
+                // createTable(remainingLabels);
+
+                // remove child is good idea
+                // const table = document.getElementById('table');
+                // console.log(table);
+                // table.removeChild(table.childNodes[index]);
+            }
+
+        }
+    </script>
+</head>
+
+<body id="body">
+</body>
+
+</html>

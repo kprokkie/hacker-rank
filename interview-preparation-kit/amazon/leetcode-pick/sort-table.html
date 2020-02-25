@@ -1,0 +1,93 @@
+<!--
+    Having a table on the front end, how would you sort the names in the table? 
+    How would you filter that information?  
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sort Table</title>
+    <style>
+        #table tr td {
+            padding: 1rem;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="button" onclick="sortTable(0)">Sort Name</button>
+    <button id="button" onclick="sortTable(1)">Sort Age</button>
+    <input id="filter" type="text" onkeyup="debounceFilterTable()" />
+    <table id="table">
+        <tr>
+            <td>Name</td>
+            <td>Age</td>
+        </tr>
+        <tr>
+            <td>Ram</td>
+            <td>34</td>
+        </tr>
+        <tr>
+            <td>Amit</td>
+            <td>31</td>
+        </tr>
+        <tr>
+            <td>Tina</td>
+            <td>29</td>
+        </tr>
+        <tr>
+            <td>Bina</td>
+            <td>20</td>
+        </tr>
+    </table>
+    <script>
+        let table = document.getElementById('table');
+        let input = document.getElementById('filter');
+        function sortTable(cell) {
+            console.log('sort');
+
+            let rows = table.rows;
+            let switching = true;
+
+            while (switching) {
+                switching = false;
+                for (let i = 1; i < rows.length - 1; i++) {
+                    let x = rows[i].getElementsByTagName('td')[cell];
+                    let y = rows[i + 1].getElementsByTagName('td')[cell];
+
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                        switching = true;
+                    }  
+                }
+            }
+        }
+        function filterTable() {
+            console.log('filter');
+
+            let filter = input.value;
+            let rows = table.rows;
+
+            for (let i = 1; i < rows.length; i++) {
+                let td = rows[i].getElementsByTagName('td')[0];
+                rows[i].style.display = td.innerHTML.toLowerCase().indexOf(filter) > -1 ? '' : 'none';
+            }
+        }
+
+        function debounce(fn, delay) {
+            let timer;
+            let context = this, args = arguments;
+            return function () {
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    fn.apply(context, arguments);
+                }, delay);
+            }
+        }
+
+        let debounceFilterTable = debounce(filterTable, 1000);
+    </script>
+</body>
+
+</html>

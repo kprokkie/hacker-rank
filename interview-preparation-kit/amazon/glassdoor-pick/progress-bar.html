@@ -1,0 +1,53 @@
+<htm>
+
+    <head>
+        <title>Progress Bar</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-content: center;
+            }
+
+            #progressBar {
+                width: 500px;
+                margin: auto;
+                border: 2px solid #ccc;
+                border-radius: 5px;
+
+            }
+
+            #progressBar .progress {
+                width: 0%;
+                height: 50px;
+                border-radius: 5px;
+                background-color: darkblue;
+            }
+
+            input {
+                margin: 1rem;
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                let progress = document.querySelector('#progressBar .progress');
+                let width = 0;
+                function progressInc() {
+                    if (width <= 100) {
+                        progress.style.width = width + '%';
+                        width++;
+                    } else {
+                        clearInterval(interval);
+                    }
+                }
+                let interval = setInterval(progressInc, 100);
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="progressBar">
+            <div class="progress"></div>
+        </div>
+    </body>
+</htm>

@@ -1,0 +1,40 @@
+<htm>
+
+    <head>
+        <title>Validate</title>
+        <style>
+            input.error {
+                border: 1px solid red;
+            }
+        </style>
+        <script>
+            function rangeValidator() {
+                const textInputs = document.querySelectorAll('.text-input');
+                console.log(textInputs);
+                for (let i = 0; i < textInputs.length; i++)
+                    if (textInputs[i].hasAttribute('range')) {
+                        textInputs[i].addEventListener('keyup', function () {
+                            console.log('en');
+                            let x = textInputs[i].value;
+                            if (isNaN(x) || x < 1 || x > 10) {
+                                textInputs[i].classList.add('error');
+                            } else {
+                                textInputs[i].classList.remove('error');
+                            }
+                        })
+                    }
+            }
+
+            window.onload = function () {
+                rangeValidator();
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="container">
+            Range: <input type="text" class="text-input" range>
+            Age: <input type="text" class="text-input">
+        </div>
+    </body>
+</htm>

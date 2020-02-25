@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>
+            Http Request
+        </title>
+        <script>
+            console.log('running script');
+            let xHttp = new XMLHttpRequest();
+            xHttp.onreadystatechange = function() {
+                console.log(xHttp);
+                if (this.readyState === 4 && this.status === 200) {
+                    console.log(xHttp.responseText);
+                    document.getElementById('data').innerText = xHttp.responseText;
+                } 
+            }
+            xHttp.open('GET', 'https://blockchain.info/stats?format=json', true);
+            xHttp.send();
+        </script> 
+    </head>
+    <body>
+        <div id="data">
+            LOADING...
+        </div>
+    </body>
+</html>

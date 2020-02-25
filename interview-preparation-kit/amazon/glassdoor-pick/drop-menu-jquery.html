@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <title>Drop Menu | jQuery</title>
+    <style>
+        #current {
+            border: 1px solid #000;
+            width: 200px;
+            padding: 0.4rem;
+            cursor: pointer;
+        }
+
+        .drop-menu {
+            display: none;
+            width: 200px;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            border: 1px solid #ccc;
+            position: absolute;
+            background-color: rgb(174, 85, 85);
+        }
+
+        .drop-menu.active {
+            display: block;
+        }
+
+        .drop-menu>li {
+            padding: 0.4rem;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .drop-menu > li:hover {
+           background-color: lightblue; 
+        }
+
+        .drop-menu>li:last-child {
+            border: 0;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let current = $('#current');
+            let dropMenu = $('.drop-menu');
+            current.click(function () {
+                dropMenu.hasClass('active') ? dropMenu.removeClass('active') : dropMenu.addClass('active');
+            });
+            dropMenu.click(function (event) {
+                current.text(event.target.innerText);
+                dropMenu.removeClass('active');
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <nav role="navigation">
+        <div id="current">
+            Select
+        </div>
+        <ul class="drop-menu">
+            <li><span>Car</span></li>
+            <li><span>Bike</span></li>
+            <li><span>Truck</span></li>
+            <li><span>Jet</span></li>
+        </ul>
+    </nav>
+</body>
+
+</html>

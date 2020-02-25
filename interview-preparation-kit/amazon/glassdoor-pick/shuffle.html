@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title>Shuffle</title>
+    <style>
+    </style>
+    <script>
+
+        function shuffle(arr) {
+            for (let i = 0; i <= arr.length - 1; i++) {
+                let random = Math.floor(Math.random() * arr.length);
+                let temp = arr[i];
+                arr[i] = arr[random];
+                arr[random] = temp;
+            }
+            return arr;
+        }
+
+        let arr = ['a', 'b', 'c', 'd', 'e'];
+        let shuffledArr = shuffle(arr);
+        console.log(shuffledArr);
+
+    </script>
+</head>
+
+<body>
+    <div id="container1">
+    </div>
+</body>
+
+</html>

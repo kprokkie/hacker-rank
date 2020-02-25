@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>Fade In Out Images</title>
+    <style>
+        #img:hover {
+            opacity: 0.5;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let img = document.getElementById('img2');
+            img.addEventListener('mouseover', function () {
+                img.style.opacity = 0.5;
+            });
+            img.addEventListener('mouseout', function () {
+                img.style.opacity = 1;
+            });
+        };
+    </script>
+</head>
+
+<body>
+    <div>
+        <img id="img" src="https://via.placeholder.com/150" alt="Placeholder Image">
+    </div>
+    <div>
+        <img id="img2" src="https://via.placeholder.com/150" alt="Placeholder Image">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Debounce & Throttle</title>
+    <style>
+        #search,
+        #button {
+            width: 20rem;
+            padding: 1rem;
+            margin: 1rem;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <input id="search" type="text" onkeyup="debounceSearch()">
+        <button id="button" onclick="throttleFilter()">Filter</button>
+    </div>
+    <script>
+        // Debounce ----------------------------------
+        const input = document.getElementById('search');
+
+        // actual search execution
+        function search() {
+            console.log(`${input.value}`);
+        }
+
+        // debounce
+        const debounce = function (fn, delay) {
+            let timer;
+            let context = this, args = arguments;
+            return function () {
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    fn.apply(context, args);
+                }, delay);
+            }
+        }
+
+        // debounce search
+        const debounceSearch = debounce(search, 1000);
+
+        // Throttle -------------------------------------
+        const button = document.getElementById('filter');
+
+        // actual filter execution
+        function filter() {
+            console.log('Filtering');
+        }
+
+        // throttle
+        const throttle = function (fn, limit) {
+            let flag = true;
+            let context = this, args = arguments;
+            return function () {
+                if (flag) {
+                    fn.apply(context, args);
+                    flag = false;
+                    setTimeout(() => {
+                        flag = true;
+                    }, limit);
+                }
+            }
+        }
+
+        // throttle filter
+        const throttleFilter = throttle(filter, 1000);
+    </script>
+</body>
+
+</html>

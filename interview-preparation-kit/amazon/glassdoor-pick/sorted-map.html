@@ -1,0 +1,41 @@
+<htm>
+
+    <head>
+        <title>Sorted</title>
+        <style>
+        </style>
+        <script>
+            const map1 = new Map();
+            map1.set('a', 4);
+            map1.set('d', 1);
+            map1.set('c', 3);
+            map1.set('b', 2);
+
+            console.log(map1);
+            console.log(map1.entries());
+            console.log(map1.keys());
+            console.log(map1.values());
+            console.log([...map1.entries()]);
+
+            // value
+            const sMap1 = new Map([...map1.entries()].sort((a, b) => b[1] - a[1]));
+            console.log(sMap1);
+
+            const sMap2 = new Map([...map1.entries()].sort((a, b) => a[1] - b[1]));
+            console.log(sMap2);
+
+            // key
+            const sMap3 = new Map([...map1.entries()].sort());
+            console.log(sMap3);
+
+            const sMap4 = new Map([...map1.entries()].reverse());
+            console.log(sMap4);
+
+        </script>
+    </head>
+
+    <body>
+        <div id="container">
+        </div>
+    </body>
+</htm>

@@ -1,0 +1,83 @@
+<!--
+    Given a JSON object, build a page of items from that JSON that meets specific design parameters 
+    (4 items per row, color of title, border, margins, padding all according to spec). 
+    
+    The spec was ugly, IMO, but whatever... I was given the design specs and was not interviewing as a designer, but as a developer. 
+    Requirements included fading images in/out on mouseover, delete an item from the list, undo a deletion, etc. 
+    Additional features included sprite display from an Amazon-provided spritesheet for showing the number of stars on reviews. 
+    All in all, it was a pretty good mix of tasks that a front end developer would be required to do on a day-to-day basis. 
+-->
+
+<!Doctype html>
+<html>
+
+<head>
+    <title>Page</title>
+    <style>
+        #gallery div {
+            padding: 1rem;
+            border: 1px solid #ccc;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gallery">
+
+    </div>
+    <script>
+        const data =
+            [
+                {
+                    "ID": "001",
+                    "Name": "Angular", "Image": "https://via.placeholder.com/100"
+                },
+                {
+                    "ID": "002",
+                    "Name": "JSON", "Image": "https://via.placeholder.com/150"
+                },
+                {
+                    "ID": "003",
+                    "Name": "Asp.Net", "Image": "https://via.placeholder.com/200"
+                },
+                {
+                    "ID": "004",
+                    "Name": "Angular2", "Image": "https://via.placeholder.com/250"
+                },
+                {
+                    "ID": "005",
+                    "Name": "JSON2", "Image": "https://via.placeholder.com/300"
+                },
+
+                {
+                    "ID": "006",
+                    "Name": "Asp.Net2", "Image": "https://via.placeholder.com/350"
+                }
+            ];
+
+        const gallery = document.getElementById('gallery');
+        function loadImages() {
+
+            let container = document.createElement('div');
+            for (let i = 0; i < data.length; i++) {
+                let div = document.createElement('div');
+                let img = document.createElement('img');
+                img.src = data[i].Image;
+                img.title = data[i].Name;
+
+                let span = document.createElement('span');
+                span.textContent = data[i].Name;
+
+                div.appendChild(img);
+                div.appendChild(span);
+                container.appendChild(div)
+            }
+            gallery.appendChild(container);
+
+        }
+        loadImages();
+    </script>
+</body>
+
+</html>

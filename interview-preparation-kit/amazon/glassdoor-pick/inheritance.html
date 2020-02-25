@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title>JS</title>
+    <script>
+        var obj1 = {
+            name: 'abc'
+        };
+
+        var obj2 = {
+            age: 25
+        };
+
+        function Test() {
+            for (let i = 1; i <= 10; i++) {
+                setTimeout(function () {
+                    console.log(i);
+                }, 0);
+            }
+        }
+        //Test();
+
+
+        function add(x) {
+            let innerFn1 = function (y) {
+                let innerFn2 = function (z) {
+                    return x + y + z;
+                }
+                return innerFn2;
+            }
+            return innerFn1;
+        }
+        console.log(add(7)(8)(3));
+    </script>
+</head>
+
+<body>
+    <div>
+        JS
+    </div>
+</body>
+
+</html>

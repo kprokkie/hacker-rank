@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <title>Palindrome</title>
+    <style>
+    </style>
+    <script>
+        function checkPalindrome(str) {
+            console.log(str);
+
+            let chars = str.split('');
+            console.log(chars);
+            let len = chars.length;
+            for (let i = 0; i <= (len - 1) / 2; i++) {
+                if (chars[i] !== chars[len - 1 - i])
+                    return false;
+            }
+            return true;
+        }
+
+        let isPalindrome = checkPalindrome('maddam');
+        console.log(isPalindrome);
+
+        function getRepeatedChar(str) {
+            let temp = [];
+
+            for (let i = 0; i <= str.length - 1; i++) {
+                if (temp.indexOf(str[i]) > -1)
+                    return str[i];
+                else
+                    temp.push(str[i]);
+            }
+
+        }
+
+        let repChar = getRepeatedChar('nmksdam');
+        console.log(repChar || 'Not Found');
+
+        window.onload = function () {
+        };
+    </script>
+</head>
+
+<body>
+    <div>Check Palindrome</div>
+    <div id="answer">
+    </div>
+</body>
+
+</html>

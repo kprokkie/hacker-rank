@@ -1,0 +1,87 @@
+<html>
+
+<head>
+    <title>Tab</title>
+    <style>
+        #tab {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        .tabs-link {}
+
+        .tabs-link a {
+            padding: 0.4rem;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .tabs-link a.active {
+            font-weight: bold;
+        }
+
+        .tabs-data>div {
+            padding: 0.4rem;
+            border: 1px solid #ccc;
+            display: none;
+        }
+
+        .tabs-data>div.active {
+            display: block;
+        }
+    </style>
+    <script>
+        function tab() {
+            let tabs = document.querySelector('.tabs-link');
+            let panels = document.querySelector('.tabs-data');
+
+            tabs.addEventListener('click', function (event) {
+                let activeTab = tabs.querySelector('a.active');
+                if (activeTab) activeTab.classList.remove('active');
+
+                let activePanel = panels.querySelector('div.active');
+                if (activePanel) activePanel.classList.remove('active');
+
+                event.target.classList.add('active');
+                nextPanel = panels.querySelector('#' + event.target.getAttribute('data-tab-id'));
+                if (nextPanel) nextPanel.classList.add('active');
+            });
+        }
+
+        window.onload = function () {
+            tab();
+        };
+    </script>
+</head>
+
+<body>
+    <div id="tab">
+        <div class="tabs-link">
+            <a class="btn active" data-tab-id="tab1">Tab 1</a>
+            <a class="btn" data-tab-id="tab2">Tab 2</a>
+            <a class="btn" data-tab-id="tab3">Tab 3</a>
+        </div>
+        <div class="tabs-data">
+            <div id="tab1" class="active">
+                <span>Tab 1</span>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquipex ea commodo consequat.</p>
+            </div>
+            <div id="tab2">
+                <span>Tab 2</span>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquipex ea commodo consequat.</p>
+            </div>
+            <div id="tab3">
+                <span>Tab 3</span>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquipex ea commodo consequat.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

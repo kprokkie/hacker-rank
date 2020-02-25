@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Slider</title>
+    <style>
+        #container {}
+
+        #slider {
+            height: 300px;
+            width: 400px;
+            /* border: 1px solid #ccc; */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        #slider .slides {
+            display: flex;
+            position: absolute;
+            left: 0;
+        }
+
+        .slides>div {
+            height: 300px;
+            width: 400px;
+            border: 1px solid red;
+        }
+
+        #slider .nav {
+            position: absolute;
+            font-size: 48px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        #slider .nav.left{
+            left: 0;
+        }
+
+        #slider .nav.right {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="slider">
+            <a class="nav left" data-rotate="left"><<</a>
+            <div class="slides" data-current="0">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div> 
+                <div>4</div>
+            </div>
+            <a class="nav right" data-rotate="right">>></a>
+        </div>
+    </div>
+    <script>
+        const slider = document.getElementById('slider');
+        const slides = slider.getElementsByClassName('slides')[0];
+
+        slider.addEventListener('click', clickHandler);
+
+        function clickHandler(e) {
+            console.log(e);
+            if (e.target.tagName === 'A' && !!e.target.dataset.rotate) {
+
+                if (e.target.dataset.rotate === 'left') {
+                    slides.dataset.current = +slides.dataset.current + 400;
+                    slides.style.left = `${slides.dataset.current}px`;
+                }
+
+                if (e.target.dataset.rotate === 'right') {
+                    slides.dataset.current = +slides.dataset.current - 400;
+                    slides.style.left = `${slides.dataset.current}px`;
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <title>
+        Pyramids
+    </title>
+    <style>
+        span {
+            display: inline-block;
+            padding: 0.4rem;
+        }
+    </style>
+    <script>
+        function halfStarPyramid(row) {
+            let div = document.getElementById('halfStarPyramid');
+            for (let i = 1; i <= row; i++) {
+                let p = document.createElement('p');
+                for (let j = 1; j <= i; j++) {
+                    let span = document.createElement('span');
+                    span.innerText = j;
+                    p.append(span);
+                }
+                div.append(p);
+            }
+        }
+
+        function halfStarPyramidRev(row) {
+            let div = document.getElementById('halfStarPyramidRev');
+            for (let i = row; i >= 1; i--) {
+                let p = document.createElement('p');
+                for (let j = 1; j <= i; j++) {
+                    let span = document.createElement('span');
+                    span.innerText = j;
+                    p.append(span);
+                }
+                div.append(p);
+            }
+        }
+
+        function fullStarPyramid(row) {
+            let div = document.getElementById('fullStarPyramid');
+            let k = 0;
+            for (let i = 1; i <= row; ++i) {
+                let p = document.createElement('p');
+                for (let space = 1; space <= row - 1; ++space) {
+                    let span = document.createElement('span');
+                    span.innerText = '';
+                    p.append(span);
+                }
+                while (k != 2 * i - 1) {
+                    let span = document.createElement('span');
+                    span.innerText = '*';
+                    p.append(span);
+                    ++k;
+                }
+                k = 0;
+
+                div.append(p);
+            }
+        }
+
+        window.onload = function () {
+            halfStarPyramid(5);
+            halfStarPyramidRev(5);
+            fullStarPyramid(5);
+        };
+    </script>
+</head>
+
+<body>
+    <div>Full Pyramid</div>
+    <div id="fullStarPyramid"></div>
+    <div>Half Pyramid</div>
+    <div id="halfStarPyramid"></div>
+    <div>Reverse Half Pyramid</div>
+    <div id="halfStarPyramidRev"></div>
+</body>
+
+</html>

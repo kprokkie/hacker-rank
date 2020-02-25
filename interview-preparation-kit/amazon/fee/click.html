@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Click</title>
+        <style>
+            #container button {
+                padding: 1rem;
+                margin: 1rem;
+                font-size: 2rem;
+                font-weight: bold;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <button data-count="0">Click 0 Times</button>
+        </div>
+        <script>
+            const container = document.getElementById('container');
+            container.addEventListener('click', clickHandler);
+
+            function clickHandler(e) {
+                if (e.target.tagName === 'BUTTON') {
+
+                    // counter set 
+                    let count = e.target.dataset.count;
+                    if (count != undefined) {
+                        count++;
+                        e.target.setAttribute('data-count', count);
+                        e.target.innerText = `Click ${count} Times`;
+                    }
+
+                    // adding dups
+                    let button = document.createElement('button');
+                    button.setAttribute('data-count', 0);
+                    button.innerText = `Click 0 Times`;
+
+                    container.appendChild(button);
+                }
+            }
+        </script>
+    </body>
+</html>

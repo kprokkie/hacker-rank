@@ -1,0 +1,40 @@
+<!--
+Write HTML, CSS, and JS to perform the following:
+There is a button on a page with text inside that says 'Clicked {#} times' with the number changing each time the button has been clicked.
+Follow up: Now each time the button is clicked, spawn a new button with its own counter, and the same functionality.
+-->
+<!DOCTYPE html>
+<html>
+<title>Button Click</title>
+
+<head>
+    <script>
+        function click() {
+            let counter = document.getElementById('counter');
+            let value = +counter.innerText + 1;
+            counter.innerText = value;
+
+            let button = document.createElement('button');
+            button.setAttribute('id', 'button');
+            button.innerHTML = 'Clicked <span id="counter">0</span> times';
+            button.addEventListener('click', click);
+
+            let body = document.getElementById('body');
+            body.appendChild(button);
+        }
+        function init() {
+            let button = document.getElementById('button');
+            button.addEventListener('click', click);
+        }
+
+        window.onload = () => {
+            init();
+        }
+    </script>
+</head>
+
+<body id="body">
+    <button id="button">Clicked <span id="counter">0</span> times</button>
+</body>
+
+</html>

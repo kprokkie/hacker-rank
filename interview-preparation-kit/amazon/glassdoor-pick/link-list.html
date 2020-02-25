@@ -1,0 +1,160 @@
+<html>
+
+<head>
+    <title>Linked List</title>
+    <style>
+        p {
+            display: flex;
+            padding: 1rem;
+            border: 1px solid #000;
+        }
+
+        span {
+            border: 1px solid #ccc;
+            padding: 0.4rem;
+            margin: 0.4rem;
+        }
+    </style>
+    <script>
+        // ES6
+        /*
+        class Node {
+            constructor(data) {
+                this.data = data;
+                this.next = null;
+            }
+        }
+
+        class SingleLinkedList {
+            constructor() {
+                this.head = null;
+                this.size = 0;
+            }
+
+            add(data) {
+                // create new node
+                let node = new Node(data);
+                // store current node
+                let current;
+
+                if (this.head == null) {
+                    // assign head to first node if list is empty
+                    this.head = node;
+                } else {
+                    // get the head to traverse down to last
+                    current = this.head;
+
+                    // iterate to end of list
+                    while (current.next) {
+                        current = current.next;
+                    }
+
+                    // add node
+                    current.next = node;
+                }
+
+                this.size++;
+            }
+
+            print() {
+                let current = this.head;
+                while (current) {
+                    console.log(current.data);
+                    current = current.next;
+                }
+            }
+        }
+        */
+
+        function Node(data) {
+            this.data = data;
+            this.next = null;
+        }
+
+        function SingleLinkedList() {
+            this.head = null;
+            this.size = 0;
+        }
+
+        SingleLinkedList.prototype.add = function (data) {
+            // create new node
+            let node = new Node(data);
+            // store current node
+            let current;
+
+            if (this.head == null) {
+                // assign head to first node if list is empty
+                this.head = node;
+            } else {
+                // get the head to traverse down to last
+                current = this.head;
+
+                // iterate to end of list
+                while (current.next) {
+                    current = current.next;
+                }
+
+                // add node
+                current.next = node;
+            }
+
+            this.size++;
+        }
+
+        SingleLinkedList.prototype.print = function () {
+            let current = this.head;
+            let div = document.getElementById('singleLinkedList');
+            let p = document.createElement('p');
+            while (current) {
+                console.log(current.data);
+                let span = document.createElement('span');
+                span.innerText = current.data;
+                p.append(span);
+                current = current.next;
+            }
+            div.append(p);
+        }
+
+        SingleLinkedList.prototype.reverse = function () {
+            let prev = null;
+            let next = null;
+            let current = this.head;
+
+            while (current != null) {
+                // store next node
+                next = current.next;
+                // reverse happens
+                current.next = prev;
+                // move one step forward
+                prev = current;
+                current = next;
+
+            }
+            // set head back
+            this.head = prev;
+
+        }
+
+        window.onload = function () {
+            var sLL = new SingleLinkedList();
+            sLL.add(10);
+            sLL.add(20);
+            sLL.add(30);
+            sLL.add(40);
+            sLL.print();
+
+            sLL.reverse();
+            sLL.print();
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <div>Single Linked List</div>
+    <div id="singleLinkedList">
+    </div>
+</body>
+
+</html>
